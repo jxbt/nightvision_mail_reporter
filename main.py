@@ -22,7 +22,7 @@ mail_settings = {
     "receiver_email":""
 }
 
-opts, args = getopt.getopt(sys.argv[1:], 's:o:', ['sarif=',"out=","sender=","password=","receiver=","server=","port=","gmail","outlook"])
+opts, args = getopt.getopt(sys.argv[1:], 's:o:', ['sarif=',"out=","sender=","password=","password-b64=","receiver=","server=","port=","gmail","outlook"])
 
 for opt, arg in opts:
     if opt in ('-s', '--sarif'):
@@ -33,6 +33,8 @@ for opt, arg in opts:
         mail_settings['sender_email'] = arg
     elif opt == '--password':
         mail_settings['password'] = arg
+    elif opt == "--password-b64":
+        mail_settings['password'] = base64.b64decode(arg).decode('utf-8')
     elif opt == '--receiver':
         mail_settings['receiver_email'] = arg
     elif opt == '--server':

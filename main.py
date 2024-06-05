@@ -7,6 +7,7 @@ from email.mime.base import MIMEBase
 from email import encoders
 import os
 from nv_report import generate_report
+import base64
 
 
 # path of the SARIF file to parse.
